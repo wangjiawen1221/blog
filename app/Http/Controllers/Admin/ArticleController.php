@@ -40,6 +40,7 @@ class ArticleController extends Controller
         $tag = Tag::all();
         $author = Config::where('name', 'AUTHOR')->value('value');
         $assign = compact('category', 'tag', 'author');
+        // dd($assign);
         return view('admin.article.create', $assign);
     }
 
@@ -78,12 +79,14 @@ class ArticleController extends Controller
     {
         $data = $request->except('_token');
         $result = $article->storeData($data);
+        // dd($result);
         if ($result) {
             // 更新热门推荐文章缓存
             Cache::forget('common:topArticle');
             // 更新标签统计缓存
             Cache::forget('common:tag');
         }
+//        return redirect()->back();
         return redirect('admin/article/index');
     }
 
