@@ -71,9 +71,20 @@
             <tr>
                 <th>内容</th>
                 <td>
-                    <div id="bjy-content">
+                <div class="edui-default">
+                    <!-- {{ $article->markdown }} -->
+                    @include('UEditor::head')
+                    <script id="ueditor" name="markdown" type="text/plain" style='width:100%;height:500px;'>{!! html_entity_decode($article->markdown) !!}</script>
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('ueditor');
+                        ue.ready(function(){
+                            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); 
+                        });
+                    </script>
+                </div>
+                    <!-- <div id="bjy-content">
                         <textarea name="markdown">{{ $article->markdown }}</textarea>
-                    </div>
+                    </div> -->
                 </td>
             </tr>
             <tr>
@@ -128,7 +139,6 @@
 
         });
     </script>
-
 
 
 @endsection

@@ -183,6 +183,7 @@ return [
          * 社会化登录
          */
         SocialiteProviders\Manager\ServiceProvider::class,
+        Stevenyangecho\UEditor\UEditorServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'UEditor'=>Stevenyangecho\UEditor\UEditorServiceProvider::class,
     ],
 
 ];
