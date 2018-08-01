@@ -23,6 +23,7 @@ class OAuthController extends Controller
         $data = [
             'targetUrl' => $_SERVER['HTTP_REFERER']
         ];
+        // dd($request);
         session($data);
         return Socialite::driver($service)->redirect();
     }
@@ -38,6 +39,11 @@ class OAuthController extends Controller
     public function handleProviderCallback(Request $request, OauthUser $oauthUserModel, $service)
     {
         // 定义各种第三方登录的type对应的数字
+        $params = $request->request->all();
+        if(isset($params['error_code'])&&$params['error_code']=='21330'){
+       		flash_error('登入失败');
+        	return redirect(url('/'));
+        }
         $type = [
             'qq' => 1,
             'weibo' => 2,

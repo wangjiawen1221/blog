@@ -52,11 +52,11 @@
                 <li class="b-nav-cname @if($category_id == 'chat') b-nav-active @endif">
                 <a href="{{ url('chat') }}">随言碎语</a>
                 </li>
-                @if(!$gitProject->isEmpty())
+                <!-- @if(!$gitProject->isEmpty())
                     <li class="b-nav-cname hidden-sm  @if($category_id == 'git') b-nav-active @endif">
                     <a href="{{ url('git') }}">开源项目</a>
                     </li>
-                @endif
+                @endif -->
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
                 @if(empty(session('user.name')))
@@ -148,7 +148,7 @@
         <footer id="b-foot" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul>
                 <li class="text-center">
-                    本博客使用免费开源的 <a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a> {{ config('bjyblog.version') }} 搭建 © 2014-2018 {{ parse_url(config('app.url'))['host'] }} 版权所有 @if(!empty($config['WEB_ICP_NUMBER'])) ICP证：{{ $config['WEB_ICP_NUMBER'] }} @endif
+                    本博客使用免费开源的 <a rel="nofollow" href="" target="_blank">laravel-jqy</a> {{ config('bjyblog.version') }} 搭建 © 2014-2018 www.jiangqiuyan.com 版权所有 @if(!empty($config['WEB_ICP_NUMBER'])) ICP证：{{ $config['WEB_ICP_NUMBER'] }} @endif
                 </li>
                 <li class="text-center">
                     @if(!empty($config['ADMIN_EMAIL']))

@@ -106,19 +106,24 @@ class IndexController extends Controller
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);
-        $category = $article->first()->category;
-        $head = [
-            'title' => $category->name,
-            'keywords' => $category->keywords,
-            'description' => $category->description,
-        ];
-        $assign = [
-            'category_id' => $id,
-            'article' => $article,
-            'tagName' => '',
-            'title' => $category->name,
-            'head' => $head
-        ];
+        if(isset($article->first()->category)){
+            $category = $article->first()->category;
+            $head = [
+                'title' => $category->name,
+                'keywords' => $category->keywords,
+                'description' => $category->description,
+            ];
+            $assign = [
+                'category_id' => $id,
+                'article' => $article,
+                'tagName' => '',
+                'title' => $category->name,
+                'head' => $head
+            ];
+        }else{
+            return abort(404);
+        }
+
         return view('home.index.index', $assign);
     }
 
